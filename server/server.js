@@ -1,8 +1,11 @@
 import express from "express";
-import { mongoURI, PORT } from "./config.js";
+import dotenv from "dotenv";
 import mongoose from "mongoose";
 import booksRoute from "./routes/booksRoute.js";
 import cors from "cors";
+
+dotenv.config();
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -16,12 +19,12 @@ app.use(cors({ origin: "http://localhost:3000" }));
 app.use("/books", booksRoute);
 
 mongoose
-  .connect(mongoURI)
+  .connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((err) => {
-    console.log(err);
+    console.error(err);
   });
