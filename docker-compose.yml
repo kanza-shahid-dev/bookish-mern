@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.server
+    container_name: server
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - MONGO_URI=mongodb+srv://kanzashahid18:vooS6N3N2TtshaKs@cluster0.bssqm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:

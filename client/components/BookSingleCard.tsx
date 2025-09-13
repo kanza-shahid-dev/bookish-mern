@@ -7,7 +7,7 @@ import { useState } from "react";
 import BookModal from "./BookModal";
 import Link from "next/link";
 
-const BookSingleCard = ({ index, book }) => {
+const BookSingleCard = ({ index, book }: any) => {
   const [showModal, setShowModal] = useState(false);
 
   return (

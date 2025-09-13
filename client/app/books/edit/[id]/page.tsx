@@ -39,7 +39,7 @@ const EditBook = () => {
     };
 
     fetchBookById();
-  }, []);
+  }, [enqueueSnackbar, id]);
 
   const handleEditBook = () => {
     const data = {
