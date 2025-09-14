@@ -22,7 +22,7 @@ const CreateBooks = () => {
     };
     setLoading(true);
     axios
-      .post("http://localhost:5000/books", data)
+      .post(`${process.env.NEXT_PUBLIC_API_URL}/books`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book Created successfully", { variant: "success" });

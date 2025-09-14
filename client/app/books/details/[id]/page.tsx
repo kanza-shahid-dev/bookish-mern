@@ -24,7 +24,7 @@ const ShowBook = () => {
     if (!id) return;
     setLoading(true);
     axios
-      .get<Book>(`http://localhost:5000/books/${id}`)
+      .get<Book>(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);

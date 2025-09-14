@@ -19,7 +19,9 @@ const EditBook = () => {
     setLoading(true);
     const fetchBookById = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/books/${id}`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/books/${id}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch book details");
         }
@@ -50,7 +52,7 @@ const EditBook = () => {
 
     setLoading(true);
     axios
-      .put(`http://localhost:5000/books/${id}`, data)
+      .put(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book edited successfully", { variant: "success" });
