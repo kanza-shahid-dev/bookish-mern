@@ -1,6 +1,7 @@
-# Bookstore-MERN
+# Bookish-MERN
 This project is a full-stack book management application. 
 
+🌐 **Live Demo**: [Bookish-MERN](https://bookish-mern-frontend.onrender.com/)  
 
 ## 🚀 Technologies Used
 
